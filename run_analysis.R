@@ -32,6 +32,8 @@ colnames(newdata)=c('Subject',"Activity",featuresname)
 Brandnew=aggregate(newdata[,3:81],list(newdata$Subject,newdata$Activity),mean)
 setnames(Brandnew,c('Group.1','Group.2'),c('Subject','Activity'))
 
+##Change activity no. to activity name
+
 for(i in 1:180)
   {
   
