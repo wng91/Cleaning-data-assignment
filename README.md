@@ -14,7 +14,9 @@ The code will do the following
 
 6) Create a new tidy dataset that average of each variable for each activity and each subject.
 
-7) Save the tidy dataset as a textfile.
+7) Change the activity number to activity name
+
+8) Save the tidy dataset as a textfile.
 
 
 #This is the Code Book describing the variables.
