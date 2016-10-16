@@ -1,10 +1,11 @@
 ##Download and unzip the file
 download.file('https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip','data.zip')
 b=unzip('data.zip')
-
+library(data.table)
 ##Read and combine the relevant tables
 
 activitylabel=read.table(b[1])
+activitylabel=activitylabel$V2
 features=read.table(b[2])
 
 ##Get variables with mean and std
@@ -30,6 +31,13 @@ colnames(newdata)=c('Subject',"Activity",featuresname)
 ##Create a new tidy dataset
 Brandnew=aggregate(newdata[,3:81],list(newdata$Subject,newdata$Activity),mean)
 setnames(Brandnew,c('Group.1','Group.2'),c('Subject','Activity'))
+
+for(i in 1:180)
+  {
+  
+  Brandnew$Activity[i]<-as.character(activitylabel[as.numeric(Brandnew$Activity[i])])
+  
+ }
 
 ##Write it into a text file
 write.table(Brandnew,file='./tidydata.txt',row.names = FALSE)
